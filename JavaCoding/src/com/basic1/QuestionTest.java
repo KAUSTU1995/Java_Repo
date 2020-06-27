@@ -5,6 +5,12 @@ import java.util.HashSet;
 
 public class QuestionTest {
 		public static int removeDuplicates() {
+			System.out.print("apple".compareTo("banana"));
+//			String str="abc";
+//			str.getClass().getSimpleName();
+//			int a=123451234512345;
+			String str="Hello World!".substring(12,6);
+			System.out.println(str);
 			ArrayList<Integer> a=new ArrayList<>();
 			a.add(1000);
 			a.add(1000);

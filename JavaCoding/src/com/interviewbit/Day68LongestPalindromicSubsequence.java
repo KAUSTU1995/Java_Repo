@@ -6,6 +6,7 @@ public class Day68LongestPalindromicSubsequence {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Day68LongestPalindromicSubsequence obj=new Day68LongestPalindromicSubsequence();
+//		String find="agbddba";
 		String find="bebdeeedaddecebbbbbabebedc";
 		int result=obj.solve(find);
 		String str=obj.printSubsequence(dpr, result,find);
@@ -54,9 +55,16 @@ public class Day68LongestPalindromicSubsequence {
     	int i=0;
     	int j=len-1;
     	int length=size;
-    	while(length!=0 && i<len && j>=0){
+    	int counter=0;
+    	if(length%2==0){
+    		counter=length/2;
+    	}else{
+    		counter=length/2+1;
+    	}
+    	while(length>=counter && i<len && j>=0){
     		if(str.charAt(i)==str.charAt(j)){
-    			temp=str.charAt(i)+temp;
+    			char tt=str.charAt(i);
+    			temp=tt+temp;
     			i++;
     			j--;
     			length--;
@@ -73,11 +81,30 @@ public class Day68LongestPalindromicSubsequence {
     		}
 //    		length--;
     	}
-    	while(length!=0){
-    		int move=temp.length()-length;
-    		temp=temp.charAt(move++)+temp;
-    		length--;
+    	
+    	if(size%2!=0){
+    		String ord="";
+    		for(int k=1;k<counter;k++){
+    			ord=temp.charAt(k)+ord;
+    		}
+    		temp=ord+temp;
     	}
+    	else{
+    		String ord="";
+    		int leng=temp.length();
+    		int p=0;
+    		while(counter!=1){
+    			ord=ord+temp.charAt(leng-p-1);
+    			p++;
+    			counter--;
+    		}
+    		temp=ord+temp;
+    	}
+//    	while(length!=0){
+//    		int move=temp.length()-length;
+//    		temp=temp.charAt(move++)+temp;
+//    		length--;
+//    	}
     	return temp;
     }
 
